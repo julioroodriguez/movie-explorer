@@ -1,27 +1,43 @@
-# MovieExplorer
+# Movie Explorer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+Movie Explorer is a web application built with Angular for discovering and searching movies.
 
-## Development server
+## Tech Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular
+- TypeScript
+- HTML
+- CSS
+- RxJS
 
-## Code scaffolding
+## Current Status
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Sprint 1 completed:
 
-## Build
+- Initial Angular project setup
+- Application routing
+- Home page
+- Search page
+- Movie detail route
+- Shared navigation
+- Shared footer
+- Responsive base layout
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Planned Features
 
-## Running unit tests
+- Popular movies
+- Trending movies
+- Upcoming movies
+- Movie search
+- Movie details
+- Cast information
+- Filters and pagination
+- Responsive design
+- TMDB API integration
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Development
 
-## Running end-to-end tests
+Install dependencies:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm install
