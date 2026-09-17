@@ -1,9 +1,15 @@
 .navbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+
   padding: 1rem 2rem;
   border-bottom: 1px solid #252832;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .navigation {
@@ -11,6 +17,16 @@
   gap: 1.5rem;
 }
 
-.logo {
-  font-weight: 700;
+.navigation a:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navigation {
+    gap: 1rem;
+  }
 }
