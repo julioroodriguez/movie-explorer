@@ -14,3 +14,32 @@
     </a>
   </div>
 </section>
+
+<section class="popular-movies">
+  <h2>Películas populares</h2>
+
+  @if (loading) {
+    <p>Cargando películas...</p>
+  } @else if (errorMessage) {
+    <div>
+      <p>{{ errorMessage }}</p>
+      <button type="button" (click)="loadPopularMovies()">
+        Reintentar
+      </button>
+    </div>
+  } @else {
+    <ul>
+      @for (movie of movies; track movie.id) {
+        <li>
+          <strong>{{ movie.title }}</strong>
+
+          @if (movie.release_date) {
+            <span> — {{ movie.release_date }}</span>
+          }
+        </li>
+      } @empty {
+        <li>No hay películas disponibles.</li>
+      }
+    </ul>
+  }
+</section>
