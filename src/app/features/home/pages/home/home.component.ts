@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit{
       {
         next: (response) => {
           this.movies = response.results;
-          console.log('Popular movies:', this.movies);
         },
         error: (error) => {
           console.error('Error loading popular movies:', error);

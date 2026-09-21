@@ -9,10 +9,11 @@ Movie Explorer is a web application built with Angular for discovering and searc
 - HTML
 - CSS
 - RxJS
+- TMDB API
 
 ## Current Status
 
-Sprint 1 completed:
+### Sprint 1 completed:
 
 - Initial Angular project setup
 - Application routing
@@ -23,17 +24,23 @@ Sprint 1 completed:
 - Shared footer
 - Responsive base layout
 
+### Sprint 2
+- Angular HttpClient configuration
+- TMDB environment configuration
+- TypeScript movie models
+- Movie service
+- TMDB authentication
+- Popular movies API integration
+- Loading and error handling
+
 ## Planned Features
 
-- Popular movies
 - Trending movies
 - Upcoming movies
 - Movie search
 - Movie details
 - Cast information
 - Filters and pagination
-- Responsive design
-- TMDB API integration
 
 ## Development
 
