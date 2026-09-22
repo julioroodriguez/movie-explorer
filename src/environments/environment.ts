@@ -1,5 +1,6 @@
 export const environment = {
     production: true,
   tmdbApiUrl: 'https://api.themoviedb.org/3',
-  tmdbToken: ''
+  tmdbToken: '',
+  tmdbImageBaseUrl: 'https://image.tmdb.org/t/p/w500',
 };

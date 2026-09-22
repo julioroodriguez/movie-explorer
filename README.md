@@ -33,10 +33,20 @@ Movie Explorer is a web application built with Angular for discovering and searc
 - Popular movies API integration
 - Loading and error handling
 
+### Sprint 3
+
+- Reusable movie card component
+- Reusable movie section component
+- Popular movies section
+- Trending movies section
+- Upcoming movies section
+- TMDB poster integration
+- Parallel API requests with RxJS
+- Responsive movie grid
+- Navigation from movie cards to movie details
+
 ## Planned Features
 
-- Trending movies
-- Upcoming movies
 - Movie search
 - Movie details
 - Cast information

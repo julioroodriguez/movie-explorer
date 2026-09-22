@@ -1,0 +1,39 @@
+<a class="movie-card" [routerLink]="['/movie', movie.id]">
+
+  <div class="poster-container">
+
+    @if (movie.poster_path) {
+      <img
+        class="poster"
+        [src]="posterUrl"
+        [alt]="'Poster de ' + movie.title"
+      >
+    } @else {
+      <div class="poster-placeholder">
+        Sin imagen
+      </div>
+    }
+
+  </div>
+
+  <div class="movie-info">
+
+    <h3>{{ movie.title }}</h3>
+
+    <div class="movie-meta">
+
+      @if (movie.release_date) {
+        <span>
+          {{ movie.release_date.slice(0, 4) }}
+        </span>
+      }
+
+      <span>
+        ★ {{ movie.vote_average.toFixed(1) }}
+      </span>
+
+    </div>
+
+  </div>
+
+</a>
