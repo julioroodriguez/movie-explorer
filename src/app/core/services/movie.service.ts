@@ -33,7 +33,7 @@ export class MovieService {
 
   getTrendingMovies(): Observable<MovieResponse> {
   return this.http.get<MovieResponse>(
-    `${this.apiUrl}trending/movie/week`,
+    `${this.apiUrl}/trending/movie/week`,
     {
       headers: this.headers
     }
@@ -42,7 +42,7 @@ export class MovieService {
 
 getUpcomingMovies(): Observable<MovieResponse> {
   return this.http.get<MovieResponse>(
-    `${this.apiUrl}/movie/popular`,
+    `${this.apiUrl}/movie/upcoming`,
      {
       headers: this.headers
     }
