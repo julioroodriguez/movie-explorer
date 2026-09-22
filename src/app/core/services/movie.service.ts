@@ -10,10 +10,15 @@ import { MovieResponse } from '../models/movie-response.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class MovieService {
 
   private readonly apiUrl = environment.tmdbApiUrl;
   private readonly token = environment.tmdbToken;
+
+  private readonly headers = {
+    Authorization: `Bearer ${this.token}`
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -21,9 +26,25 @@ export class MovieService {
   return this.http.get<MovieResponse>(
     `${this.apiUrl}/movie/popular`,
     {
-      headers: {
-        Authorization: `Bearer ${this.token}`
-      }
+      headers: this.headers
+    }
+  );
+}
+
+  getTrendingMovies(): Observable<MovieResponse> {
+  return this.http.get<MovieResponse>(
+    `${this.apiUrl}trending/movie/week`,
+    {
+      headers: this.headers
+    }
+  );
+}
+
+getUpcomingMovies(): Observable<MovieResponse> {
+  return this.http.get<MovieResponse>(
+    `${this.apiUrl}/movie/popular`,
+     {
+      headers: this.headers
     }
   );
 }
