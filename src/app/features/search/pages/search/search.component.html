@@ -1,7 +1,58 @@
-<section>
-  <h1>Buscar películas</h1>
+<section class="search-page">
 
-  <p>
-    Aquí construiremos nuestro buscador con TMDB.
-  </p>
+  <header class="search-header">
+
+    <p class="eyebrow">
+      MOVIE EXPLORER
+    </p>
+
+    <h1>Buscar películas</h1>
+
+    <p>
+      Encuentra películas por título.
+    </p>
+
+  </header>
+
+  <div class="search-box">
+
+    <input
+      type="search"
+      [formControl]="searchControl"
+      placeholder="Buscar una película..."
+      aria-label="Buscar películas"
+    >
+
+  </div>
+
+  @if (loading) {
+
+    <div class="status-message">
+      Buscando películas...
+    </div>
+
+  } @else if (errorMessage) {
+
+    <div class="status-message">
+      {{ errorMessage }}
+    </div>
+
+  } @else if (
+    hasSearched &&
+    movies.length === 0
+  ) {
+
+    <div class="status-message">
+      No se encontraron películas.
+    </div>
+
+  } @else if (movies.length > 0) {
+
+    <app-movie-section
+      title="Resultados"
+      [movies]="movies">
+    </app-movie-section>
+
+  }
+
 </section>
