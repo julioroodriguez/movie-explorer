@@ -1,7 +1,137 @@
-<section>
-  <h1>Detalle de película</h1>
+@if (loading) {
 
-  <p>
-    Aquí mostraremos la información de la película.
-  </p>
-</section>
+  <div class="status-message">
+    Cargando película...
+  </div>
+
+} @else if (errorMessage) {
+
+  <div class="status-message">
+    {{ errorMessage }}
+  </div>
+
+} @else if (movie) {
+
+  <article class="movie-detail">
+
+    <section class="movie-hero">
+
+      @if (movie.poster_path) {
+
+        <img
+          class="movie-poster"
+          [src]="imageBaseUrl + movie.poster_path"
+          [alt]="'Poster de ' + movie.title"
+        >
+
+      }
+
+      <div class="movie-information">
+
+        <p class="eyebrow">
+          MOVIE
+        </p>
+
+        <h1>
+          {{ movie.title }}
+        </h1>
+
+        @if (movie.tagline) {
+          <p class="tagline">
+            {{ movie.tagline }}
+          </p>
+        }
+
+        <div class="metadata">
+
+          @if (movie.release_date) {
+            <span>
+              {{ movie.release_date.slice(0, 4) }}
+            </span>
+          }
+
+          @if (movie.runtime) {
+            <span>
+              {{ movie.runtime }} min
+            </span>
+          }
+
+          <span>
+            ★ {{ movie.vote_average.toFixed(1) }}
+          </span>
+
+        </div>
+
+        <div class="genres">
+
+          @for (
+            genre of movie.genres;
+            track genre.id
+          ) {
+
+            <span>
+              {{ genre.name }}
+            </span>
+
+          }
+
+        </div>
+
+        <p class="overview">
+          {{ movie.overview }}
+        </p>
+
+      </div>
+
+    </section>
+    @if (cast.length > 0) {
+
+  <section class="cast-section">
+
+    <h2>Reparto</h2>
+
+    <div class="cast-grid">
+
+      @for (
+        member of cast;
+        track member.id
+      ) {
+
+        <article class="cast-member">
+
+          @if (member.profile_path) {
+
+            <img
+              [src]="imageBaseUrl + member.profile_path"
+              [alt]="member.name"
+            >
+
+          }
+
+          <strong>
+            {{ member.name }}
+          </strong>
+
+          <span>
+            {{ member.character }}
+          </span>
+
+        </article>
+
+      }
+
+    </div>
+
+  </section>
+
+}
+  </article>
+}
+@if (recommendations.length > 0) {
+
+  <app-movie-section
+    title="También te puede gustar"
+    [movies]="recommendations">
+  </app-movie-section>
+
+}
