@@ -1,0 +1,28 @@
+@if (totalPages > 1) {
+
+  <nav
+    class="pagination"
+    aria-label="Paginación de películas">
+
+    <button
+      type="button"
+      [disabled]="currentPage === 1"
+      (click)="changePage(currentPage - 1)">
+      ← Anterior
+    </button>
+
+    <span aria-live="polite">
+      Página {{ currentPage }}
+      de {{ totalPages }}
+    </span>
+
+    <button
+      type="button"
+      [disabled]="currentPage === totalPages"
+      (click)="changePage(currentPage + 1)">
+      Siguiente →
+    </button>
+
+  </nav>
+
+}
