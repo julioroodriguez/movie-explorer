@@ -1,0 +1,292 @@
+.movie-detail {
+  width: min(1200px, calc(100% - 4rem));
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+/* HERO / INFORMACIÓN PRINCIPAL */
+
+.movie-hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.movie-poster {
+  width: 100%;
+  display: block;
+
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  background-color: #171a21;
+}
+
+.movie-information {
+  padding-top: 0.5rem;
+}
+
+.eyebrow {
+  margin: 0;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15rem;
+
+  color: #a0a0a0;
+}
+
+.movie-information h1 {
+  margin: 0.7rem 0 1rem;
+
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.tagline {
+  margin: 0 0 1.5rem;
+
+  font-size: 1.1rem;
+  font-style: italic;
+
+  color: #b7b7b7;
+}
+
+/* METADATOS */
+
+.metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+
+  margin-bottom: 1.5rem;
+
+  color: #d0d0d0;
+}
+
+.metadata span {
+  display: flex;
+  align-items: center;
+}
+
+/* GÉNEROS */
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+
+  margin-bottom: 2rem;
+}
+
+.genres span {
+  padding: 0.45rem 0.8rem;
+
+  border: 1px solid #343844;
+  border-radius: 999px;
+
+  background-color: #171a21;
+
+  font-size: 0.85rem;
+  color: #d7d7d7;
+}
+
+/* SINOPSIS */
+
+.overview {
+  max-width: 750px;
+
+  margin: 0;
+
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  color: #c5c5c5;
+}
+
+/* REPARTO */
+
+.cast-section {
+  margin-top: 5rem;
+}
+
+.cast-section h2 {
+  margin: 0 0 1.5rem;
+
+  font-size: 1.7rem;
+}
+
+.cast-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(130px, 1fr));
+
+  gap: 1.25rem;
+}
+
+.cast-member {
+  overflow: hidden;
+
+  background-color: #171a21;
+
+  border: 1px solid #252832;
+  border-radius: 10px;
+}
+
+.cast-member img {
+  width: 100%;
+  display: block;
+
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+
+  background-color: #252832;
+}
+
+.cast-member strong,
+.cast-member span {
+  display: block;
+
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.cast-member strong {
+  padding-top: 0.8rem;
+
+  font-size: 0.95rem;
+}
+
+.cast-member span {
+  padding-top: 0.25rem;
+  padding-bottom: 0.9rem;
+
+  font-size: 0.8rem;
+
+  color: #a8a8a8;
+}
+
+/* RECOMENDACIONES */
+
+.movie-detail app-movie-section {
+  display: block;
+  margin-top: 5rem;
+}
+
+/* LOADING / ERROR */
+
+.status-message {
+  width: min(1200px, calc(100% - 4rem));
+
+  margin: 0 auto;
+
+  padding: 6rem 0;
+
+  text-align: center;
+
+  color: #c5c5c5;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .movie-hero {
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+  }
+
+  .movie-information h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+  }
+}
+
+/* MÓVIL */
+
+@media (max-width: 650px) {
+  .movie-detail {
+    width: min(100% - 2rem, 1200px);
+    padding: 3rem 0;
+  }
+
+  .movie-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .movie-poster {
+    width: min(280px, 100%);
+    margin: 0 auto;
+  }
+
+  .movie-information {
+    padding-top: 0;
+  }
+
+  .movie-information h1 {
+    font-size: clamp(2.2rem, 10vw, 3rem);
+  }
+
+  .metadata {
+    gap: 0.6rem 1rem;
+  }
+
+  .overview {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .cast-section {
+    margin-top: 4rem;
+  }
+
+  .cast-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 1rem;
+  }
+
+  .movie-detail app-movie-section {
+    margin-top: 4rem;
+  }
+
+  .status-message {
+    width: min(100% - 2rem, 1200px);
+  }
+}
+.cast-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 2 / 3;
+
+  background-color: #252832;
+
+  color: #8d8d8d;
+  font-size: 0.8rem;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+}

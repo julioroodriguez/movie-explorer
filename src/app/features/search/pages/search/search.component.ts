@@ -6,11 +6,13 @@ import { MovieSectionComponent } from '../../../../shared/components/movie-secti
 import { MovieService } from '../../../../core/services/movie.service';
 import { query } from '@angular/animations';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
+
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [ReactiveFormsModule, MovieSectionComponent],
+  imports: [ReactiveFormsModule, MovieSectionComponent, PaginationComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
@@ -25,6 +27,8 @@ export class SearchComponent {
   loading = false;
   errorMessage = '';
   hasSearched = false;
+  currentPage = 1;
+  totalPages = 1;
 
   constructor(private movieService: MovieService,
               private router: Router,
@@ -60,7 +64,7 @@ export class SearchComponent {
         this.errorMessage = '';
         this.hasSearched = true;
 
-        return this.movieService.searchMovies(cleanQuery).pipe(
+        return this.movieService.searchMovies(cleanQuery, this.currentPage).pipe(
           catchError(error => {
             console.error('Error searching movies:', error);
             
@@ -78,7 +82,48 @@ export class SearchComponent {
     ).subscribe(response => {
       if(response){
         this.movies = response.results;
+
+        this.totalPages = Math.min(
+          response.total_pages, 500
+        );
       }
     });
+
+    
   }
+
+  changePage(page: number):void {
+      
+    const query = this.searchControl.value.trim();
+
+    if (query.length < 2){
+      return;
+    }
+
+    this.currentPage = page;
+    this.loading = true;
+
+    this.movieService.searchMovies(query, page).pipe(
+      finalize(() => {
+        this.loading = false;
+      })
+    ).subscribe({
+      next: response => {
+
+        this.movies = response.results;
+
+        this.totalPages = Math.min(response.total_pages, 500);
+
+        window.scrollTo({
+          top:0,
+          behavior: 'smooth'
+        });
+      },
+      error: error => {
+        console.error('Error changing search page', error);
+        this.errorMessage = 'No se pudieron cargar los resultados';
+      }
+    });
+
+    }
 }
