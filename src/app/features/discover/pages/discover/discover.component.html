@@ -1,0 +1,144 @@
+<section class="discover-page">
+
+  <header class="discover-header">
+
+    <p class="eyebrow">
+      MOVIE EXPLORER
+    </p>
+
+    <h1>Explorar películas</h1>
+
+    <p>
+      Filtra películas por género,
+      año y popularidad.
+    </p>
+
+  </header>
+
+  <form
+    class="filters"
+    [formGroup]="filterForm"
+    (ngSubmit)="applyFilters()">
+
+    <label>
+
+      <span>Género</span>
+
+      <select formControlName="genreId">
+
+        <option [ngValue]="null">
+          Todos
+        </option>
+
+        @for (
+          genre of genres;
+          track genre.id
+        ) {
+
+          <option [ngValue]="genre.id">
+            {{ genre.name }}
+          </option>
+
+        }
+
+      </select>
+
+    </label>
+
+    <label>
+
+      <span>Año</span>
+
+      <input
+        type="number"
+        formControlName="year"
+        min="1900"
+        [max]="currentYear"
+        placeholder="Ej. 2024">
+
+    </label>
+
+    <label>
+
+      <span>Ordenar por</span>
+
+      <select formControlName="sortBy">
+
+        <option value="popularity.desc">
+          Popularidad
+        </option>
+
+        <option value="vote_average.desc">
+          Mejor valoradas
+        </option>
+
+        <option value="primary_release_date.desc">
+          Más recientes
+        </option>
+
+      </select>
+
+    </label>
+
+    <div class="filter-actions">
+
+      <button type="submit">
+        Aplicar filtros
+      </button>
+
+      <button
+        type="button"
+        class="secondary"
+        (click)="clearFilters()">
+        Limpiar
+      </button>
+
+    </div>
+
+  </form>
+
+  @if (loading) {
+
+    <div
+      class="status-message"
+      aria-live="polite">
+
+      Cargando películas...
+
+    </div>
+
+  } @else if (errorMessage) {
+
+    <div
+      class="status-message"
+      aria-live="polite">
+
+      {{ errorMessage }}
+
+    </div>
+
+  } @else if (movies.length === 0) {
+
+    <div class="status-message">
+
+      No encontramos películas
+      con estos filtros.
+
+    </div>
+
+  } @else {
+
+    <app-movie-section
+      title="Películas"
+      [movies]="movies">
+    </app-movie-section>
+
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChange)="changePage($event)">
+    </app-pagination>
+
+  }
+
+</section>

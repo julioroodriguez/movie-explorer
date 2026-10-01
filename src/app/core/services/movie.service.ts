@@ -7,6 +7,10 @@ import { MovieResponse } from '../models/movie-response.model';
 import { MovieDetails } from '../models/movie-details.model';
 import { CreditsResponse } from '../models/credits-response.model';
 
+import { GenreResponse } from '../models/genre-response.model';
+import { DiscoverFilters } from '../models/discover-filters.model';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +26,52 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
+  getGenres(): Observable<GenreResponse> {
+  return this.http.get<GenreResponse>(
+    `${this.apiUrl}/genre/movie/list`,
+    {
+      headers: this.headers
+    }
+  );
+}
+
+discoverMovies(filters: DiscoverFilters): Observable<MovieResponse> {
+
+  let params = new HttpParams()
+    .set('sort_by', filters.sortBy ?? 'popularity.desc')
+    .set('page', String(filters.page ?? 1))
+    .set('include_adult', 'false')
+    .set('include_video', 'false');
+
+  if (filters.genreId) {
+    params = params.set(
+      'with_genres',
+      String(filters.genreId)
+    );
+  }
+
+  if (filters.year) {
+    params = params.set(
+      'primary_release_year',
+      String(filters.year)
+    );
+  }
+
+  if (filters.sortBy === 'vote_average.desc') {
+    params = params.set(
+      'vote_count.gte',
+      '100'
+    );
+  }
+
+  return this.http.get<MovieResponse>(
+    `${this.apiUrl}/discover/movie`,
+    {
+      headers: this.headers,
+      params
+    }
+  );
+}
   getPopularMovies(): Observable<MovieResponse> {
   return this.http.get<MovieResponse>(
     `${this.apiUrl}/movie/popular`,
@@ -49,16 +99,22 @@ getUpcomingMovies(): Observable<MovieResponse> {
   );
 }
 
-searchMovies(query: string): Observable<MovieResponse> {
+searchMovies(
+  query: string,
+  page: number = 1
+): Observable<MovieResponse> {
+
   const params = new HttpParams()
-  .set('query',query);
+    .set('query', query)
+    .set('page', String(page))
+    .set('include_adult', 'false');
 
   return this.http.get<MovieResponse>(
-   `${this.apiUrl}/search/movie`,
-   {
-    headers: this.headers,
-    params
-   }
+    `${this.apiUrl}/search/movie`,
+    {
+      headers: this.headers,
+      params
+    }
   );
 }
 

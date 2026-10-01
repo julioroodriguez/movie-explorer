@@ -7,6 +7,8 @@
         class="poster"
         [src]="posterUrl"
         [alt]="'Poster de ' + movie.title"
+        loading="lazy"
+        decoding="async"
       >
     } @else {
       <div class="poster-placeholder">

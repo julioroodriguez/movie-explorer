@@ -104,9 +104,15 @@
             <img
               [src]="imageBaseUrl + member.profile_path"
               [alt]="member.name"
+              loading="lazy"
+              decoding="async"
             >
 
-          }
+          }@else {
+  <div class="cast-placeholder">
+    Sin imagen
+  </div>
+}
 
           <strong>
             {{ member.name }}
