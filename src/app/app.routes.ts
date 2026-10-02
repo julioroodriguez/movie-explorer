@@ -1,30 +1,32 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './features/home/pages/home/home.component';
-import { SearchComponent } from './features/search/pages/search/search.component'; 
-import { MovieDetailComponent } from './features/movie/pages/movie-detail/movie-detail.component'; 
-import { DiscoverComponent }
-  from './features/discover/pages/discover/discover.component';
 
 export const routes: Routes = [
-    {
-        path: '',
-        component: HomeComponent,
-    },
-     {
-        path: 'search',
-        component: SearchComponent,
-    },
-    {
-  path: 'discover',
-  component: DiscoverComponent
-},
-     {
-        path: 'movie/:id',
-        component: MovieDetailComponent,
-    },
-     {
-        path: '**',
-        redirectTo: '',
-    },
-    
+  {
+    path: '',
+    loadComponent: () =>
+      import('./features/home/pages/home/home.component')
+        .then(m => m.HomeComponent)
+  },
+  {
+    path: 'search',
+    loadComponent: () =>
+      import('./features/search/pages/search/search.component')
+        .then(m => m.SearchComponent)
+  },
+  {
+    path: 'discover',
+    loadComponent: () =>
+      import('./features/discover/pages/discover/discover.component')
+        .then(m => m.DiscoverComponent)
+  },
+  {
+    path: 'movie/:id',
+    loadComponent: () =>
+      import('./features/movie/pages/movie-detail/movie-detail.component')
+        .then(m => m.MovieDetailComponent)
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
