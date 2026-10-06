@@ -1,0 +1,21 @@
+version: 1
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+
+    build:
+      commands:
+        - node scripts/generate-environment.cjs
+        - npm run build
+
+  artifacts:
+    baseDirectory: dist/movie-explorer/browser
+    files:
+      - '**/*'
+
+  cache:
+    paths:
+      - .npm/**/*
