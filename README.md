@@ -5,6 +5,13 @@ Movie Explorer is a responsive web application built with Angular and TypeScript
 The project was created as part of my frontend development portfolio, with a focus on Angular architecture, reusable components, reactive programming with RxJS and API integration.
 
 ---
+## 🚀 Live Demo
+
+[View Movie Explorer](https://main.d2cx20u6duhlrx.amplifyapp.com)
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## ✨ Features
 
@@ -329,7 +336,7 @@ dist/movie-explorer/
 - Movie recommendations
 - Loading, error and empty states
 
-### 🚧 Sprint 5 — Discover & UX
+### ✅ Sprint 5 — Discover & UX
 
 - Movie discovery page
 - Genre filters
@@ -343,21 +350,18 @@ dist/movie-explorer/
 - Image lazy loading
 - Improved empty and error states
 
-### ⏳ Sprint 6 — Production
+### ✅ Sprint 6 — Production
 
-Planned:
-
-- Testing
-- Code cleanup
-- Performance optimization
-- Final UI polish
-- Final documentation
-- Screenshots
-- AWS deployment
-- CI/CD
-- Production release
-
----
+- Unit testing
+- Production build optimization
+- Lazy-loaded routes
+- GitHub Actions CI
+- Automated test and build pipeline
+- AWS Amplify deployment
+- Continuous deployment from GitHub
+- Production environment configuration
+- SPA routing configuration
+- Final responsive and accessibility review
 
 ## 🎯 Project Goals
 
